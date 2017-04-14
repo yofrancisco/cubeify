@@ -1,0 +1,27 @@
+{
+  "name": "cubeify",
+  "version": "0.0.1",
+  "description": "Turn a text into a funky cube.",
+  "author": {
+    "name": "Francisco Martinez",
+    "email": "francisco@francicomartinez.website",
+    "url": "http://franciscomartinez.website"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francismartinez/cubeify.git"
+  },
+  "license": "MIT",
+  "main": "./src/index.js",
+  "bin": {
+    "cubeify": "./src/index.js"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
