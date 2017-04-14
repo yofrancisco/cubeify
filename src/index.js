@@ -7,6 +7,7 @@ function generateCube(text, options) {
   let cubeText = "";
 
   const textToCube = text.trim().toUpperCase();
+  const arrToCube = textToCube.split("");
   const textToCubeSpace = textToCube.split("").join("\u0020");
   const linebreak = "\n";
 
@@ -25,11 +26,11 @@ function generateCube(text, options) {
   cubeText += textToCubeSpace;
   cubeText += linebreak;
 
-  for (i = 0; i < Math.floor(textToCube.length / 2 - 1); i++) {
-    cubeText += spacer.repeat(Math.floor((textToCube.length / 2) - i - 1) * 2);
+  for (i = 0; i < (Math.floor(textToCube.length / 2) - 1); i++) {
+    cubeText += spacer.repeat((Math.floor(textToCube.length / 2) - i - 1) * 2);
     cubeText += "/";
     cubeText += spacer.repeat(i * 2 + 1);
-    cubeText += textToCube.charAt(i + 1);
+    cubeText += arrToCube[i + 1];
     cubeText += spacer.repeat((textToCube.length - i - 3) * 2 + 1);
     cubeText += "/";
     cubeText += spacer.repeat(i * 2 + 1);
@@ -39,31 +40,31 @@ function generateCube(text, options) {
 
   cubeText += textToCubeSpace;
   cubeText += spacer.repeat(Math.floor(textToCube.length / 2 - 1) * 2 + 1);
-  cubeText += textToCube.charAt(textToCube.length / 2 - 1);
+  cubeText += textToCube.charAt(textToCube.length / 2 - (1 - (textToCube.length % 2)));
   cubeText += linebreak;
 
-  for (i = 0; i < Math.floor(textToCube.length / 2 - 2); i++) {
-    cubeText += textToCube.charAt(i + 1);
-    cubeText += spacer.repeat(Math.floor(textToCube.length / 2 - 1) * 2 + 1);
-    cubeText += textToCube.charAt(i + (textToCube.length / 2) + 1);
+  for (i = 0; i < Math.floor(textToCube.length / 2) - (textToCube.length + 1) % 2 - 1; i++) {
+    cubeText += arrToCube[i + 1];
+    cubeText += spacer.repeat((Math.floor(textToCube.length / 2) - 1) * 2 + 1);
+    cubeText += arrToCube[i + Math.floor(textToCube.length / 2) + 1];
     cubeText += spacer.repeat((Math.floor((textToCube.length - 1) / 2 - 1)) * 2 + 1);
     cubeText += textToCube.charAt((textToCube.length) - i - 2);
     cubeText += spacer.repeat((Math.floor(textToCube.length / 2) - 1) * 2 + 1);
-    cubeText += textToCube.charAt((textToCube.length / 2) - i - 2);
+    cubeText += textToCube.charAt(Math.floor(textToCube.length / 2) - i - (2 - (textToCube.length % 2)));
     cubeText += linebreak;
   }
 
-  cubeText += textToCube.charAt(textToCube.length / 2 - 1);
+  cubeText += arrToCube[Math.floor(textToCube.length / 2) - (textToCube.length + 1) % 2];
   cubeText += spacer.repeat(Math.floor(textToCube.length / 2 - 1) * 2 + 1);
   cubeText += textToCubeSpace.split("").reverse().join("");
   cubeText += linebreak;
 
   for (i = 0; i < Math.floor(textToCube.length / 2 - 1); i++) {
-    cubeText += textToCube.charAt(textToCube.length / 2 + i);
+    cubeText += arrToCube[Math.floor(textToCube.length / 2) + i + (textToCube.length) % 2];
     cubeText += spacer.repeat(Math.floor((textToCube.length / 2) - i - 2) * 2 + 1);
     cubeText += "/";
     cubeText += spacer.repeat((i + Math.floor((textToCube.length - 1) / 2)) * 2 + 1);
-    cubeText += textToCube.charAt(textToCube.length - (i + 2));
+    cubeText += textToCube.charAt(Math.floor(textToCube.length / 2 ) - (i + 1));
     cubeText += spacer.repeat(Math.floor((textToCube.length / 2) - i - 2) * 2 + 1);
     cubeText += "/";
     cubeText += linebreak;
