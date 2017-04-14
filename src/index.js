@@ -6,7 +6,7 @@ function generateCube(text, options) {
   let spacer;
   let cubeText = "";
 
-  const textToCube = text.trim().toUpperCase();\
+  const textToCube = text.trim().toUpperCase();
   const textToCubeSpace = textToCube.split("").join("\u0020");
   const linebreak = "\n";
 
