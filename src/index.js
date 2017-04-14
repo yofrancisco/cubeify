@@ -10,6 +10,11 @@ function generateCube(text, options) {
   const textToCubeSpace = textToCube.split("").join("\u0020");
   const linebreak = "\n";
 
+  if (textToCubeSpace.length <= 1) {
+    console.log("Input must be greater than 1");
+    return;
+  }
+
   if (options.dashed) {
     spacer = "-";
   } else {
