@@ -15,9 +15,9 @@ Y F I E B U C
 
 Sorry pleb math atm
 
-
 ## Install
-`yarn global add cubeify`
+
+`npm install cubeify -g`
 
 ## Usage
 
@@ -52,3 +52,7 @@ O-/---------E-/
 O O W T X E T
 
 ```
+
+## repo testing
+
+`npx cubeify textwoo`
