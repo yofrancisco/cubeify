@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-const program = require('commander');
+const { Command } = require("commander");
+const program = new Command();
 
 function generateCube(text, options) {
   let spacer;
@@ -26,7 +27,7 @@ function generateCube(text, options) {
   cubeText += textToCubeSpace;
   cubeText += linebreak;
 
-  for (i = 0; i < (Math.floor(textToCube.length / 2) - 1); i++) {
+  for (i = 0; i < Math.floor(textToCube.length / 2) - 1; i++) {
     cubeText += spacer.repeat((Math.floor(textToCube.length / 2) - i - 1) * 2);
     cubeText += "/";
     cubeText += spacer.repeat(i * 2 + 1);
@@ -40,32 +41,54 @@ function generateCube(text, options) {
 
   cubeText += textToCubeSpace;
   cubeText += spacer.repeat(Math.floor(textToCube.length / 2 - 1) * 2 + 1);
-  cubeText += textToCube.charAt(textToCube.length / 2 - (1 - (textToCube.length % 2)));
+  cubeText += textToCube.charAt(
+    textToCube.length / 2 - (1 - (textToCube.length % 2))
+  );
   cubeText += linebreak;
 
-  for (i = 0; i < Math.floor(textToCube.length / 2) - (textToCube.length + 1) % 2 - 1; i++) {
+  for (
+    i = 0;
+    i < Math.floor(textToCube.length / 2) - ((textToCube.length + 1) % 2) - 1;
+    i++
+  ) {
     cubeText += arrToCube[i + 1];
     cubeText += spacer.repeat((Math.floor(textToCube.length / 2) - 1) * 2 + 1);
     cubeText += arrToCube[i + Math.floor(textToCube.length / 2) + 1];
-    cubeText += spacer.repeat((Math.floor((textToCube.length - 1) / 2 - 1)) * 2 + 1);
-    cubeText += textToCube.charAt((textToCube.length) - i - 2);
+    cubeText += spacer.repeat(
+      Math.floor((textToCube.length - 1) / 2 - 1) * 2 + 1
+    );
+    cubeText += textToCube.charAt(textToCube.length - i - 2);
     cubeText += spacer.repeat((Math.floor(textToCube.length / 2) - 1) * 2 + 1);
-    cubeText += textToCube.charAt(Math.floor(textToCube.length / 2) - i - (2 - (textToCube.length % 2)));
+    cubeText += textToCube.charAt(
+      Math.floor(textToCube.length / 2) - i - (2 - (textToCube.length % 2))
+    );
     cubeText += linebreak;
   }
 
-  cubeText += arrToCube[Math.floor(textToCube.length / 2) - (textToCube.length + 1) % 2];
+  cubeText +=
+    arrToCube[
+      Math.floor(textToCube.length / 2) - ((textToCube.length + 1) % 2)
+    ];
   cubeText += spacer.repeat(Math.floor(textToCube.length / 2 - 1) * 2 + 1);
   cubeText += textToCubeSpace.split("").reverse().join("");
   cubeText += linebreak;
 
   for (i = 0; i < Math.floor(textToCube.length / 2 - 1); i++) {
-    cubeText += arrToCube[Math.floor(textToCube.length / 2) + i + (textToCube.length) % 2];
-    cubeText += spacer.repeat(Math.floor((textToCube.length / 2) - i - 2) * 2 + 1);
+    cubeText +=
+      arrToCube[
+        Math.floor(textToCube.length / 2) + i + (textToCube.length % 2)
+      ];
+    cubeText += spacer.repeat(
+      Math.floor(textToCube.length / 2 - i - 2) * 2 + 1
+    );
     cubeText += "/";
-    cubeText += spacer.repeat((i + Math.floor((textToCube.length - 1) / 2)) * 2 + 1);
-    cubeText += textToCube.charAt(Math.floor(textToCube.length / 2 ) - (i + 1));
-    cubeText += spacer.repeat(Math.floor((textToCube.length / 2) - i - 2) * 2 + 1);
+    cubeText += spacer.repeat(
+      (i + Math.floor((textToCube.length - 1) / 2)) * 2 + 1
+    );
+    cubeText += textToCube.charAt(Math.floor(textToCube.length / 2) - (i + 1));
+    cubeText += spacer.repeat(
+      Math.floor(textToCube.length / 2 - i - 2) * 2 + 1
+    );
     cubeText += "/";
     cubeText += linebreak;
   }
@@ -76,9 +99,9 @@ function generateCube(text, options) {
 }
 
 program
-  .version('0.0.1')
-  .arguments('<text>')
-  .option('-d, --dashed', 'use dashes instead of spaces')
+  .version("0.0.1")
+  .arguments("<text>")
+  .option("-d, --dashed", "use dashes instead of spaces")
   .action((text, options) => {
     generateCube(text, options);
   })
